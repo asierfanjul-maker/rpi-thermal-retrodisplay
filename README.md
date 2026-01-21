@@ -12,6 +12,17 @@ El proyecto consiste en un servicio en segundo plano (daemon) gestionado por **S
 * **Decodificación:** Integrado **CD4511** (BCD-to-7-Segment Latch/Decoder/Driver).
 * **Multiplexación:** Compuerta **CD40107BE** (Dual NAND Buffer/Driver) en configuración de colector abierto para la conmutación de cátodos/ánodos.
 * **Niveles Lógicos:** Adaptación de impedancias para compatibilidad entre lógica TTL (5V) y CMOS (3.3V) de la Raspberry Pi.
+* **Alimentación:** A 5V.
+
+## Conexiones (Pinout)
+
+| Señal | Función | GPIO (BCM) | Pin Físico (Header) | Destino |
+| :--- | :--- | :--- | :--- | :--- |
+| **BCD A** | Bit 0 (Peso 1) | **21** | 40 | CD4511 Pin 7 |
+| **BCD B** | Bit 1 (Peso 2) | **12** | 32 | CD4511 Pin 1 |
+| **BCD C** | Bit 2 (Peso 4) | **16** | 36 | CD4511 Pin 2 |
+| **BCD D** | Bit 3 (Peso 8) | **20** | 38 | CD4511 Pin 6 |
+| **MUX CTRL** | Selección Dígito | **25** | 22 | CD40107 Pin 1/2 |
 
 ### Lógica de Software
 * **Lenguaje:** C (ISO C99).
@@ -40,5 +51,5 @@ El proyecto consiste en un servicio en segundo plano (daemon) gestionado por **S
 
    # 4. Iniciar el servicio inmediatamente
      sudo systemctl start tempdisplay.service
-    
-   
+4. **Verificación de estado:**
+   systemctl status tempdisplay.service
